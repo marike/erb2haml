@@ -21,8 +21,9 @@ namespace :haml do
 
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
       "#{color("Haml", RED_FG)}..."
-
+   
     Find.find("app/views/") do |path|
+      # handle erb file with and without html extension 
       if FileTest.file?(path) and path.downcase.match(/\.html\.erb$/i) or path.downcase.match(/\.erb$/i)
         haml_path = path.slice(0...-3)+"haml"
 
